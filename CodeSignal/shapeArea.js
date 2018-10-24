@@ -46,4 +46,5 @@ function shapeArea(n) {
   }
   return start;
 }
+
 shapeArea(4);
