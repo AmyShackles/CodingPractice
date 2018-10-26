@@ -29,3 +29,26 @@ function makeArrayConsecutive2(statues) {
 
 makeArrayConsecutive2([6, 2, 3, 8]);
 makeArrayConsecutive2([70, 71, 69]);
+
+/* Second solution, less naive */
+
+function makeArrayConsecutive2(statues) {
+  let max = -Infinity; // initialize max at lowest possible value
+  let min = Infinity; // initialize min at highest possible value
+  for (let i = 0; i < statues.length; i++) {
+    // if the value of the current index is greater than max, it becomes the max
+    if (statues[i] > max) {
+      max = statues[i];
+    }
+    // if the value of the current index is less than min, it becomes the min
+    if (statues[i] < min) {
+      min = statues[i];
+    }
+  }
+  // To find how many consecutive statues are missing, you only need to get the maximum and minimum
+  // and then subtract the number of statues (and another 1 so you don't count a statue twice)
+  // E.g., 1 - 8 is 7 but you only have six missing statues between them - 2, 3, 4, 5, 6, 7
+  return max - min - (statues.length - 1);
+}
+
+makeArrayConsecutive2([6, 1, 7, 8]);
