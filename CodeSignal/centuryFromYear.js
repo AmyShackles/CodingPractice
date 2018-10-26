@@ -50,4 +50,11 @@ centuryFromYear(1); // 1
 centuryFromYear(2000); // 20
 centuryFromYear(201); // 3
 centuryFromYear(220); // 3
-centuryFromYear(2005); // 21
+centuryFromYear(2005); //
+
+/* In retrospective, I feel stupid because this could have easily been solved with .... */
+function centuryFromYear(year) {
+  return Math.ceil(year / 100);
+  // (because a century is 100 years and if there was any remainder, it would push it into the next century,
+  // so you would want to round to the next integer if there were a remainder)
+}
