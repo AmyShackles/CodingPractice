@@ -1,3 +1,5 @@
+/* Brute force implementation */
+
 var twoSum = function(nums, target) {
   let i = 0;
   while (i < nums.length) {
@@ -9,3 +11,15 @@ var twoSum = function(nums, target) {
     i++;
   }
 };
+
+/* Using an object to store the values to increase time efficiency */
+function twoSum(nums, target) {
+  let hash = {};
+  for (let i = 0; i < nums.length; i++) {
+    let complement = target - nums[i];
+    if (hash[complement] !== undefined) {
+      return [hash[complement], i];
+    }
+    hash[nums[i]] = i;
+  }
+}
