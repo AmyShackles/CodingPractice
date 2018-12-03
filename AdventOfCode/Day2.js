@@ -289,10 +289,10 @@ ohvflkatysqitjxbunezgncdpr
 yhvflkatysmkqjxbunazgwcdpr
 zlvolkatysmiqjxbunezgwcdpr
 ohvflpatysmiqjxbunezgwcapb
-ohvflkatysmuqjxbunezgfcdur`
+ohvflkatysmuqjxbunezgfcdur`;
 
 function checksum(input) {
-  let arr = input.split('\n');
+  let arr = input.split("\n");
   let threeCount = 0;
   let twoCount = 0;
   for (let row = 0; row < arr.length; row++) {
@@ -306,7 +306,7 @@ function checksum(input) {
         counts[arr[row][col]] = 1;
       }
       if (counts[arr[row][col]] == 2) {
-        two++
+        two++;
       } else if (counts[arr[row][col]] == 3) {
         two--;
         three++;
@@ -318,7 +318,7 @@ function checksum(input) {
       twoCount++;
     }
     if (three > 0) {
-      threeCount++
+      threeCount++;
     }
   }
   return threeCount * twoCount;
@@ -349,38 +349,40 @@ this is found by removing the differing character from either ID, producing
 fgij.)*/
 
 function parseInput(input) {
-  return input.split('\n');
+  return input.split("\n");
 }
 
 function findBox(input) {
   let array = parseInput(input);
   let i = 0;
-  let arr = [] while (i < array.length) {
+  let arr = [];
+  while (i < array.length) {
     for (let j = array.length - 1; j > i; j--) {
       if (i == j) continue;
       arr += testPair(array[i], array[j]);
     }
     i++;
   }
-  return arr.split(',').join('')
+  return arr.split(",").join("");
 }
 
 function testPair(a, b) {
   let i = 0;
   let count = 0;
-  let common = [] while (i < b.length && i < a.length) {
+  let common = [];
+  while (i < b.length && i < a.length) {
     if (a[i] == b[i]) {
-      common.push(a[i])
+      common.push(a[i]);
       count++;
     } else {
       count--;
     }
     i++;
   }
-  if (count == (a.length - 2)) {
-    return common
+  if (count == a.length - 2) {
+    return common;
   }
-  return []
+  return [];
 }
 
-findBox(day2Input)
+findBox(day2Input);
