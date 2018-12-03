@@ -347,3 +347,40 @@ the third (h and u). Those must be the correct boxes.
 What letters are common between the two correct box IDs? (In the example above,
 this is found by removing the differing character from either ID, producing
 fgij.)*/
+
+function parseInput(input) {
+  return input.split('\n');
+}
+
+function findBox(input) {
+  let array = parseInput(input);
+  let i = 0;
+  let arr = [] while (i < array.length) {
+    for (let j = array.length - 1; j > i; j--) {
+      if (i == j) continue;
+      arr += testPair(array[i], array[j]);
+    }
+    i++;
+  }
+  return arr.split(',').join('')
+}
+
+function testPair(a, b) {
+  let i = 0;
+  let count = 0;
+  let common = [] while (i < b.length && i < a.length) {
+    if (a[i] == b[i]) {
+      common.push(a[i])
+      count++;
+    } else {
+      count--;
+    }
+    i++;
+  }
+  if (count == (a.length - 2)) {
+    return common
+  }
+  return []
+}
+
+findBox(day2Input)
