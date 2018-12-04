@@ -1366,48 +1366,6 @@ function parseInput(input) {
   return area;
 }
 
-function inWidthRange(areaI, areaJ) {
-  let num = 0;
-  let subtractor = 0;
-  if (areaI[0] > areaJ[0]) {
-    subtractor = areaI[0];
-  } else {
-    subtractor = areaJ[0];
-  }
-  if (areaI[1] < areaJ[1]) {
-    return [subtractor, areaI[1], areaI[1] - subtractor];
-  } else {
-    return [areaJ[1], subtractor, areaJ[1] - subtractor];
-  }
-}
-
-function inHeightRange(areaI, areaJ) {
-  let num = 0;
-  let subtractor = 0;
-  if (areaI[2] > areaJ[2]) {
-    subtractor = areaI[2];
-  } else {
-    subtractor = areaJ[2];
-  }
-  if (areaI[3] < areaJ[3]) {
-    return [areaI[3], subtractor, areaI[3] - subtractor];
-  } else {
-    return [areaJ[3], subtractor, areaJ[3] - subtractor];
-  }
-}
-
-function inRange(areaI, areaJ) {
-  if (
-    areaI[0] < areaJ[1] &&
-    areaJ[0] < areaI[1] &&
-    (areaI[2] < areaJ[3] && areaJ[2] < areaI[3])
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 function partOne(input) {
   let area = parseInput(input);
   let countedSquares = [];
