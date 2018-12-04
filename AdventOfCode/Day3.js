@@ -1376,7 +1376,7 @@ function partOne(input) {
     }
   }
   let overlaps = 0;
-  console.log("Area: ", area);
+  
   let i = 0;
   while (i < area.length) {
     let left = area[i][0];
@@ -1398,18 +1398,7 @@ function partOne(input) {
     }
     i++;
   }
-  console.log("Counted squares:\n", countedSquares);
-  let count = 0;
-  i = 0;
-  while (i < countedSquares.length) {
-    for (let j = 0; j < countedSquares[i].length; j++) {
-      if (countedSquares[i][j] == "X") {
-        count++;
-      }
-    }
-    i++;
-    // return overlaps.reduce((num, total) => num + total)
-  }
+  
   return overlaps;
 }
 
