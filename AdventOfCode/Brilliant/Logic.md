@@ -210,3 +210,65 @@ If open red box and find yellow, you can then move to yellow box to find what co
 
 #### Note: If there are four different boxes that may or may not be mislabeled, the minimum number of boxes necessary to know which balloon is in which box is three.
 
+#### Prompt
+Three doors.  2 signs are true, one is false.
+1 - Escape is behind door 2
+2 - Escape is behind door 3
+3 - Escape is not behind this door
+
+#### Problem solving
+Since we know that one door's label is false and 2 and 3 are mutually exclusive, we know that one is true and one is false.  Since 1 states that escape is behind door 2 and door 3 says escape is not behind its door, we know that it's door 2 that is false and that escape can be found behind it.
+
+#### Note: It is helpful to determine if things are mutually exclusive in logic problems.  The rule that things are either true or not true while being mutually exclusive is the law of excluded middle.
+
+#### Prompt
+A necklace has been stolen!  You know the culprit is one of three people - Andy, Beryl, or Cammy.  While only one stole the necklace, the whole crew know who the thief is.  You interview:
+
+```
+Andy:  "Beryl stole the necklace.  I'd never lie."
+Beryl: "Cammy stole the necklace.  I didn't steal it."
+Cammy: "Andy stole the necklace.  I didn't steal it."
+```
+
+Any of them who are telling the truth are telling the truth for both statements while those who are lying are lying in both statements.  Who stole the necklace?
+
+#### Problem solving
+- Only one of the three stole the necklace.  Since everyone is blaming everyone else, only one can be telling the truth.
+- Cammy and Beryl can't both be liars because then they'd be lying about not stealing and admitting that the two of them both stole it, which is impossible.
+- This leads us to believe Andy is lying.  Since he accuses Beryl, this tells us that Beryl didn't steal the necklace, making her statements true and Cammy our thief.
+
+#### Prompt:
+Lee, Miriam, Naila, and Otis are in a bakeoff and score 1st, 2nd, 3rd, and 4th.
+
+Miriam placed ahead of Otis
+Naila finished ahead of Lee.
+
+Exactly two of the clues below are true and one is false:
+1. Otis' ranking was next to Lee's
+2. Naila's ranking was not next to Lee's
+3. Miriam's ranking was next to Naila's
+
+### Problem Solving
+Combinations wherein Miriam finishes ahead of Otis and Naila finishes ahead of Lee:
+
+Miriam Otis Naila Lee - 1-F 2-F 3-F
+Miriam Naila Lee Otis - 1-T 2-F 3-T
+Miriam Naila Otis Lee - 1-T 2-T 3-T
+Naila Lee Miriam Otis - 1-F 2-F 3-F
+Naila Miriam Lee Otis - 1-T 2-T 3-T
+Naila Miriam Otis Lee - 1-T 2-T 3-T
+
+This means that Miriam placed 1st, Naila placed 2nd, Lee placed 3rd, and Otis placed 4th.
+
+#### Prompt:
+Village with three inhabitants, each either human or werewolf.  Humans always tell the truth, werewolves always tell lies.  They each make a statement:
+
+```
+Advrik: "At least one of us is a werewolf"
+Bardia: "At least one of us is a human."
+Cherry: "Exactly two of us are werewolves"
+```
+
+If Advrik is telling the truth, Advrik is a human.  If Advrik is a human, Bardia has to be human since their statement would be true.  If Advrik and Bardia are both human, Cherry has to be ly ing and a werewolf.
+
+If Advrik is lying, he'd be a werewolf, but his statement says there is at least one werewolves and since werewolves lie, that would be like saying there aren't any werewolves, which is inaccurate.
