@@ -47,6 +47,7 @@ A 9 × 9 array of characters, in which each character is either a digit from '1'
 
 Return true if grid represents a valid Sudoku puzzle, otherwise return false. */
 
+/* Version 1 */
 function sudoku2(grid) {
   let squares = getSquares(grid);
   for (let i = 0; i < grid.length; i++) {
@@ -162,6 +163,110 @@ let grid = [
   [".", ".", ".", ".", ".", "2", ".", ".", "."],
   [".", "1", ".", "2", ".", ".", ".", ".", "."],
   [".", "2", ".", ".", "3", ".", ".", ".", "."]
+];
+
+sudoku2(grid);
+
+/* Version 2 */
+function sudoku2(grid) {
+  let squares = getSquares(grid);
+  for (let i = 0; i < grid.length; i++) {
+    if (
+      !checkRow(grid[i]) ||
+      !checkColumn(grid, i) ||
+      !checkSquares(squares, i)
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function getSquares(grid) {
+  let index = 0;
+  let squares = [];
+  while (index < grid.length) {
+    let topsquares = [];
+    let middlesquares = [];
+    let bottomsquares = [];
+    for (let i = 0; i < 3; i++) {
+      for (let j = index; j < index + 3; j++) {
+        topsquares.push(grid[i][j]);
+      }
+    }
+    for (let i = 3; i < 6; i++) {
+      for (let j = index; j < index + 3; j++) {
+        middlesquares.push(grid[i][j]);
+      }
+    }
+    for (let i = 6; i < 9; i++) {
+      for (let j = index; j < index + 3; j++) {
+        bottomsquares.push(grid[i][j]);
+      }
+    }
+    squares[index] = topsquares;
+    squares[index + 1] = middlesquares;
+    squares[index + 2] = bottomsquares;
+    index += 3;
+  }
+  return squares;
+}
+
+function checkRow(arr) {
+  let seen = new Array(9).fill(0);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] != ".") {
+      if (seen[arr[i] - 1] === 0) {
+        seen[arr[i] - 1] = arr[i];
+      } else {
+        console.log("false in row");
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function checkColumn(arr, index) {
+  let seen = new Array(9).fill(0);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][index] != ".") {
+      if (seen[arr[i][index] - 1] === 0) {
+        seen[arr[i][index] - 1] = arr[i][index];
+      } else {
+        console.log("false in column");
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function checkSquares(arr, index) {
+  let seen = new Array(9).fill(0);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[index][i] != ".") {
+      if (seen[arr[index][i] - 1] === 0) {
+        seen[arr[index][i] - 1] = arr[index][i];
+      } else {
+        console.log("false in square");
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+let grid = [
+  [".", ".", ".", "1", "4", ".", ".", "2", "."],
+  [".", ".", "6", ".", ".", ".", ".", ".", "."],
+  [".", ".", ".", ".", ".", ".", ".", ".", "."],
+  [".", ".", "1", ".", ".", ".", ".", ".", "."],
+  [".", "6", "7", ".", ".", ".", ".", ".", "9"],
+  [".", ".", ".", ".", ".", ".", "8", "1", "."],
+  [".", "3", ".", ".", ".", ".", ".", ".", "6"],
+  [".", ".", ".", ".", ".", "7", ".", ".", "."],
+  [".", ".", ".", "5", ".", ".", ".", "7", "."]
 ];
 
 sudoku2(grid);
