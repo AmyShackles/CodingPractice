@@ -1,0 +1,39 @@
+  class ListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+let a = new ListNode("Australian Sheperd");
+let b = new ListNode("Beagle");
+let c = new ListNode("Cairne Terrier");
+let d = new ListNode("Doberman");
+let e = new ListNode("English Mastiff");
+
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+
+function kthToLastNode(k, list) {
+  if (list == null) return "Error, empty list"
+  let firstIndex = list;
+  let secondIndex = list;
+  let count = 0;
+    while (count < k) {      
+      if (secondIndex == null) {
+        return "Error: K longer than list";
+      }
+      secondIndex = secondIndex.next;
+
+      count++;
+    }
+    while (secondIndex != null) {
+      secondIndex = secondIndex.next;
+      firstIndex = firstIndex.next;
+    }
+  return firstIndex.value
+}
+
+kthToLastNode(3, a)
