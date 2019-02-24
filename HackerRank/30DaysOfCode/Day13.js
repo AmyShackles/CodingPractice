@@ -1,3 +1,17 @@
+/*
+Given a Book class and a Solution class,
+write a MyBook class that does the following:
+- Inherits from Book
+- Has a parameterized constructor taking these 3 parameters:
+    - string Title
+    - string Author
+    - int price
+- Implements the Book class' abstract display() method so it prints:
+    - Title: $title
+    - Author: $author
+    - Price: $price
+*/
+
 class MyBook extends Book {
   // Declare your class here.
   /**
