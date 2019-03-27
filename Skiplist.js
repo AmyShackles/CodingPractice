@@ -22,13 +22,16 @@ class Node {
         this.head = new Node(value);
         this.storage.push(this.head);
         this.tail = this.head;
+        if (random) {
+          this.tail.below = this.tail
+        }
       } else {
         this.tail.next = new Node(value);
+        if (random) {
+          this.tail.below = this.tail.next;
+        }
         this.tail = this.tail.next;
         this.storage.push(this.tail);
-      }
-      if (random) {
-        this.tail.below = this.tail;
       }
     }
   
@@ -44,4 +47,3 @@ class Node {
   list.add(c);
   list.add(d);
   console.table(list)
-  
