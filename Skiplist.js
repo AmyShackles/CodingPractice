@@ -1,4 +1,4 @@
-class Node {
+class SkipNode {
     constructor(value) {
       this.value = value;
       this.next = null;
@@ -6,7 +6,7 @@ class Node {
     }
   }
   
-  class LinkedList {
+  class SkipList {
     constructor() {
       this.storage = [];
       this.count = this.storage.length;
@@ -15,36 +15,53 @@ class Node {
     }
   
     add(value) {
-        let random = Math.round(Math.random()) % 4;
-    
-        if (this.head === null) {
-          this.head = new Node(value);
-          this.storage.push(this.head);
-          this.count++;
-          this.tail = this.head;
-          if (this.count % 3 === 0) {
-            this.tail.below = this.tail
+      let random = Math.round(Math.random()) % 4;
+  
+      if (this.head === null) {
+        this.head = new SkipNode(value);
+        this.storage.push(this.head);
+        this.count++;
+        this.tail = this.head;
+        this.tail.below = this.head;
+      } else {
+        this.tail.next = new SkipNode(value);
+        if (this.count % 2 !== 0) {
+          this.tail.below = this.tail.next;
+        }
+        this.tail = this.tail.next;
+        this.storage.push(this.tail);
+        this.count++;
+      }
+    }
+    search(value) {
+      let current = this.head.below;
+      if (current.value === value) {
+        return value;
+      } else {
+        while (current.next.value <= value) {
+          if (current.next.value === value) {
+            return current.next;
+          }        
+          current = current.next.below
+        }
+        while (current.next) {
+          if (current.value === value) {
+            return current;
           }
-        } else {
-          this.tail.next = new Node(value);
-          if (this.count % 3 === 0) {
-            this.tail.below = this.tail.next;
-          }
-          this.tail = this.tail.next;
-          this.storage.push(this.tail);
-          this.count++;
+          console.log('second while', current.next)
+          current = current.next;
         }
       }
-  
+      return null;
+    }
   }
   
-  let a = 1;
-  let b = 2;
-  let c = 3;
-  let d = 4;
-  let list = new LinkedList();
-  list.add(a);
-  list.add(b);
-  list.add(c);
-  list.add(d);
-  console.table(list)
+  
+  let skiplist = new SkipList();
+  for (let i = 1; i < 21474837; i++) {
+    skiplist.add(i);
+  }
+  
+  console.time("Skip list search");
+  skiplist.search(2147832);
+  console.timeEnd("Skip list search");
