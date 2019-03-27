@@ -15,25 +15,26 @@ class Node {
     }
   
     add(value) {
-      let random = Math.floor(Math.random() * 2);
-  
-  
-      if (this.head === null) {
-        this.head = new Node(value);
-        this.storage.push(this.head);
-        this.tail = this.head;
-        if (random) {
-          this.tail.below = this.tail
+        let random = Math.round(Math.random()) % 4;
+    
+        if (this.head === null) {
+          this.head = new Node(value);
+          this.storage.push(this.head);
+          this.count++;
+          this.tail = this.head;
+          if (this.count % 3 === 0) {
+            this.tail.below = this.tail
+          }
+        } else {
+          this.tail.next = new Node(value);
+          if (this.count % 3 === 0) {
+            this.tail.below = this.tail.next;
+          }
+          this.tail = this.tail.next;
+          this.storage.push(this.tail);
+          this.count++;
         }
-      } else {
-        this.tail.next = new Node(value);
-        if (random) {
-          this.tail.below = this.tail.next;
-        }
-        this.tail = this.tail.next;
-        this.storage.push(this.tail);
       }
-    }
   
   }
   
