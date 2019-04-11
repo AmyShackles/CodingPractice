@@ -23,7 +23,30 @@ class DoublyLinkedList {
       this.tail.prev = temp;
     }
   }
-
+  remove(val) {
+    let current = this.head;
+    while (current.next !== null) {
+      if (current.value === val) {
+        if (current === this.head) {
+          current = current.next;
+          this.head = current;
+          this.head.prev = null;
+        } else if (current === this.tail) {
+          let prev = current.prev;
+          prev.next = current.next;
+          current = current.prev;
+          current.next = null;
+        } else {
+        let prev = current.prev;
+        current = current.next;
+        current.prev = prev;
+        prev.next = current;
+        }
+      } else {
+        current = current.next;
+      }
+    }
+  }
   print() {
     let current = this.head;
     while (current) {
@@ -49,6 +72,7 @@ doublyLinkedList.add(17);
 doublyLinkedList.add(12);
 doublyLinkedList.add(7);
 doublyLinkedList.add(14);
+doublyLinkedList.remove(7);
 
 doublyLinkedList.print()
 doublyLinkedList.printBackward();
