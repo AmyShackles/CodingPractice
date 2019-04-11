@@ -47,6 +47,18 @@ class DoublyLinkedList {
       }
     }
   }
+  count() {
+    let count = 1;
+    let current = this.head;
+    while (current.next !== null) {
+      count++;
+      current = current.next;
+    }
+    return count;
+  }
+  peek() {
+    return this.tail.value;
+  }
   print() {
     let current = this.head;
     while (current) {
