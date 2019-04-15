@@ -1,0 +1,13 @@
+function beautifulDays(start, end, divisor) {
+  let count = 0;
+  for (let i = start; i <= end; i++) {
+    let num = String(i);
+    let numReverse = parseInt(num.split('').reverse().join(''));
+    if (Math.abs(num - numReverse) % divisor === 0) {
+      count++;
+    }
+  }
+  return count;
+}
+
+beautifulDays(13, 45, 3)
